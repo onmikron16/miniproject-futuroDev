@@ -20,10 +20,17 @@ public class Organizacao {
         listaProjetos.add(projeto);
     }
 
+    public String getName() {
+        return name;
+    }
+
     public void listarProjetos() {
         for (ProjetoSustentavel projeto : listaProjetos) {
             System.out.println("Projeto: " + projeto.getName());
         }
     }
 
+    public List<ProjetoSustentavel> getListaProjetos() {
+        return listaProjetos;
+    }
 }

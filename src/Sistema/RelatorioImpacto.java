@@ -1,4 +1,4 @@
-package Projeto;
+package Sistema;
 
 public class RelatorioImpacto {
 
@@ -14,6 +14,6 @@ public class RelatorioImpacto {
     public void exibirRelatorio() {
         System.out.println("Relatório de Impacto");
         System.out.println("Arvores plantadas: " + arvoresPlantadas);
-        System.out.println("Redução de CO2: " + reducaoCO2);
+        System.out.println("Redução de CO2: " + reducaoCO2 * 0.5 + " toneladas");
     }
 }
