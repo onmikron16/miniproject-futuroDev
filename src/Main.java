@@ -106,7 +106,7 @@ public class Main {
             return;
         }
 
-        System.out.println("--- Adicionar Voluntario ---");
+        System.out.println("--- Adicionar Voluntario --- ");
         System.out.println("Nome do Voluntario:");
         String nomeVoluntario = sc.nextLine();
         System.out.println("Email do Voluntario:");
