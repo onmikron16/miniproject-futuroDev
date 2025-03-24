@@ -179,8 +179,7 @@ public class Main {
             return;
         }
 
-
-        List<Integer> index = IndexProjeto(organizacao, tipoProjetoRelatorio);;
+        List<Integer> index = IndexProjeto(organizacao, tipoProjetoRelatorio);
 
         if (index.isEmpty()) {
             System.out.println("Nenhum projeto cadastrado");
@@ -227,7 +226,7 @@ public class Main {
             System.out.println("-----------------------------");
             System.out.println("Nome: " + projeto.getName());
             System.out.println("Descrição: " + projeto.getDescricao());
-            if(organizacao instanceof ONG) System.out.println("ONG Responsável: " + projeto.getOrganizacao().getName());
+                    if(organizacao instanceof ONG) System.out.println("ONG Responsável: " + projeto.getOrganizacao().getName());
             else System.out.println("EmpresaResponsável: " + projeto.getOrganizacao().getName());
 
             if(projeto.getRelatorioImpacto() == null) {
@@ -271,9 +270,8 @@ public class Main {
             }
             System.out.println("--------------------------------------------------");
             System.out.println(i + " - " + listaProjetos.get(i).getName());
-            listaProjetos.get(i).getVoluntarios().forEach(voluntario -> {
-                System.out.println("Nome: " + voluntario.getNome());
-            });
+            listaProjetos.get(i).getVoluntarios().forEach(voluntario
+                    -> System.out.println("Nome: " + voluntario.getNome()));
         }
 
         System.out.println("Deseja Adicionar voluntarios para algun projeto? (S/N)");
@@ -282,33 +280,33 @@ public class Main {
             System.out.println("Qual o nome do voluntario?");
             String voluntarioNome = sc.nextLine();
 
-            listaProjetos.forEach(projetoSustentavel -> {
-                projetoSustentavel.getVoluntarios().forEach(voluntario -> {
-                    if(!voluntario.getNome().equals(voluntarioNome)
-                            || organizacao.getListaProjetos().stream().allMatch(projeto
-                            -> projeto.getVoluntarios().contains(voluntario))) {
-                        System.out.println("Voluntario não encontrado ou já está em todos os projetos.");
-                        return;
-                    }
+            listaProjetos.forEach(projetoSustentavel
+                    -> projetoSustentavel.getVoluntarios().forEach(voluntario -> {
+                if(!voluntario.getNome().equals(voluntarioNome)
+                        || organizacao.getListaProjetos().stream().allMatch(projeto
+                        -> projeto.getVoluntarios().contains(voluntario))) {
+                    System.out.println("Voluntario não encontrado ou já está em todos os projetos.");
+                    return;
+                }
 
-                    System.out.println("Projetos Cadastrados:");
-                    for (int i = 0; i < organizacao.getListaProjetos().size(); i++) {
-                        System.out.println("--------------------------------------------------");
-                        ProjetoSustentavel projeto = organizacao.getListaProjetos().get(i);
-                        System.out.println(i + " - " + projeto.getName() + "\nTipo: " + projeto.getClass().getSimpleName());
-                    }
-                    System.out.println("\nQual Projeto deseja adicionar o voluntario? Digite o ID:");
-                    int idProjeto = sc.nextInt();
-                    sc.nextLine();
+                System.out.println("Projetos Cadastrados:");
+                for (int i = 0; i < organizacao.getListaProjetos().size(); i++) {
+                    System.out.println("--------------------------------------------------");
+                    ProjetoSustentavel projeto = organizacao.getListaProjetos().get(i);
+                    System.out.println(i + " - " + projeto.getName() + "\nTipo: " + projeto.getClass().getSimpleName());
+                }
+                System.out.println("\nQual Projeto deseja adicionar o voluntario? Digite o ID:");
+                int idProjeto = sc.nextInt();
+                sc.nextLine();
 
-                    if (idProjeto < 0 || idProjeto >= organizacao.getListaProjetos().size()) {
-                        System.out.println("Opção inválida");
-                        return;
-                    }
-                    organizacao.getListaProjetos().get(idProjeto).adicionarVoluntario(voluntario);
-                    System.out.println("Voluntario adicionado ao projeto: " + organizacao.getListaProjetos().get(idProjeto).getName());
-                });
-            });
+                if (idProjeto < 0 || idProjeto >= organizacao.getListaProjetos().size()) {
+                    System.out.println("Opção inválida");
+                    return;
+                }
+
+                organizacao.getListaProjetos().get(idProjeto).adicionarVoluntario(voluntario);
+                System.out.println("Voluntario adicionado ao projeto: " + organizacao.getListaProjetos().get(idProjeto).getName());
+            }));
         }
 
     }

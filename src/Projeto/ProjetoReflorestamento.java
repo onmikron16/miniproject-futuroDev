@@ -1,7 +1,5 @@
 package Projeto;
 
-import Sistema.Empresa;
-import Sistema.ONG;
 import Sistema.Organizacao;
 
 public class ProjetoReflorestamento extends ProjetoSustentavel implements ImpactoAmbiental {
